@@ -26,9 +26,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Authors
 
-* **Pilasilda Antony George** - *Initial work* - [GitHub](https://github.com/Pilasilda)
-* **Rajani Shrestha** - *Initial work* - [GitHub](https://github.uio.no/rajanis)
-* **Meimona Hakim** - *Initial work* - [GitHub](https://github.com/mmhakim)
+* **Pilasilda Antony George** - *Manager and Developer* - [GitHub](https://github.com/Pilasilda)
+* **Rajani Shrestha** - *Manager and Developer* - [GitHub](https://github.uio.no/rajanis)
+* **Meimona Hakim** - *Manager and Developer* - [GitHub](https://github.com/mmhakim)
 
 
 ## License
