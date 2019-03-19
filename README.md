@@ -1,4 +1,4 @@
-# flutter_app
+# TeachNLearn
 
 A new Flutter application.
 
