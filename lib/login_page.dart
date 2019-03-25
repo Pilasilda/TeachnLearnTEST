@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/login_page.dart';
+//import 'package:flutter_app/login_page.dart';
 
 class LoginPage extends StatefulWidget{
   static String tag = 'Loginpage';
@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage>{
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
-      initialValue: 'pilasilda96@hotmail.com',
+      initialValue: 'pilasilda9@hotmail.com',
       decoration: InputDecoration(
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
