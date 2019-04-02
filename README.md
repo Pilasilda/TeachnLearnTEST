@@ -23,6 +23,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Built With
 
 * [Flutter](https://flutter.dev/) - The framework used
+* [Android studio](https://developer.android.com/studio) - The framework used
 
 ## Authors
 
