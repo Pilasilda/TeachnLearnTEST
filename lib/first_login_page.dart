@@ -1,14 +1,15 @@
+import 'login_page.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_app/login_page.dart';
 
-class LoginPage extends StatefulWidget{
-  static String tag = 'Loginpage';
+class FirstLoginPage extends StatefulWidget{
+  static String tag = 'FirstLoginpage';
 
   @override
-  _LoginPageState createState() => new _LoginPageState();
+  _FirstLoginPageState createState() => new _FirstLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>{
+class _FirstLoginPageState extends State<FirstLoginPage>{
   @override
   Widget build(BuildContext context){
 
@@ -21,30 +22,6 @@ class _LoginPageState extends State<LoginPage>{
       ),
     );
 
-    final email = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: 'example@hotmail.com',
-      decoration: InputDecoration(
-        hintText: 'Email',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32.0)
-        ),
-      ),
-    );
-
-    final password = TextFormField(
-        autofocus: false,
-        //initialValue: 'some password',
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: 'password',
-          contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0)),
-        ),
-    );
 
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -55,15 +32,19 @@ class _LoginPageState extends State<LoginPage>{
         child: MaterialButton(
           minWidth: 200.0,
           height: 42.0,
-          onPressed: (){},
+          onPressed: (){
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => new LoginPage())
+            );
+          },
           color: Colors.lightBlueAccent,
           child: Text('Log In', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
 
-    final forgotLabel = FlatButton(
-      child: Text('Forgot password?',
+    final registerLabel = FlatButton(
+      child: Text('Not registered?',
           style: TextStyle(color: Colors.black54)),
       onPressed: (){},
     );
@@ -76,13 +57,9 @@ class _LoginPageState extends State<LoginPage>{
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             logo,
-            SizedBox(height: 48.0),
-            email,
-            SizedBox(height: 8.0),
-            password,
             SizedBox(height: 24.0),
             loginButton,
-            forgotLabel
+            registerLabel
           ],
         ),
       ),
