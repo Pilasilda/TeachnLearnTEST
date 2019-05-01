@@ -43,15 +43,15 @@ class _FirstLoginPageState extends State<FirstLoginPage>{
       ),
     );
 
-/*    final registerLabel = FlatButton(
+  /*  final registerLabel = FlatButton(
       child: Text('Not registered?',
           style: TextStyle(color: Colors.black54)),
       onPressed: (){
-//        Navigator.push(context,
-//            new MaterialPageRoute(builder: (context) => new registration_page())
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new registration_page())
         );
       },
-    );*/
+    ); */
 
     return Scaffold(
       backgroundColor: Colors.white,
