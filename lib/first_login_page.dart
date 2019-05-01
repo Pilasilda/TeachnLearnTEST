@@ -1,5 +1,6 @@
 import 'login_page.dart';
 import 'package:flutter/material.dart';
+import 'registration_page.dart';
 //import 'package:flutter_app/login_page.dart';
 
 class FirstLoginPage extends StatefulWidget{
@@ -43,15 +44,15 @@ class _FirstLoginPageState extends State<FirstLoginPage>{
       ),
     );
 
-/*    final registerLabel = FlatButton(
+    final registerLabel = FlatButton(
       child: Text('Not registered?',
           style: TextStyle(color: Colors.black54)),
       onPressed: (){
-//        Navigator.push(context,
-//            new MaterialPageRoute(builder: (context) => new registration_page())
+        Navigator.push(context,
+            new MaterialPageRoute(builder: (context) => new RegistrationPage())
         );
       },
-    );*/
+    );
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -63,7 +64,7 @@ class _FirstLoginPageState extends State<FirstLoginPage>{
             logo,
             SizedBox(height: 24.0),
             loginButton,
-            //registerLabel
+            registerLabel
           ],
         ),
       ),

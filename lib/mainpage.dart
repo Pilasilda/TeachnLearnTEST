@@ -23,24 +23,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/*
 class Mainpage extends StatefulWidget{
   static String tag = 'Mainpage';
 
   @override
   _Mainpage createState()  => new _Mainpage();
 }
-
-class _Mainpage extends State<Mainpage>{
-  @override
-  Widget build(BuildContext context){
-
-    final rajani = Hero(
-      tag : 'hero',
-          child: CircleAvatar(
-            backgroundColor: Colors.white,
-            radius: 48.0,
-            child: new Image.asset("lib/wwf-logo-design.jpg"),
-    ),
-    );
-  }
-}
+*/
