@@ -54,16 +54,45 @@ class _NameGenderPageState extends State<NameGenderPage>{
       ),
     );
 
-    final genderCheckbox = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'Gender',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0)),
-      ),
-    );
+
+    bool _value1 = false;
+    bool _value2 = false;
+
+    //we omitted the brackets '{}' and are using fat arrow '=>' instead, this is dart syntax
+    void _value1Changed(bool value) => setState(() => _value1 = value);
+    void _value2Changed(bool value) => setState(() => _value2 = value);
+
+
+
+    final genderCheckbox = new Container(
+          padding: new EdgeInsets.all(5.0),
+          alignment: Alignment.topLeft,
+          child: new Center(
+
+            child: new Column(
+              children: <Widget>[
+
+                Text('Gender', textAlign: TextAlign.left,),
+
+                new CheckboxListTile(
+                  value: _value2,
+                  onChanged: _value2Changed,
+                  title: new Text('Male'),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  activeColor: Colors.blueAccent,
+                ),
+
+                new CheckboxListTile(
+                  value: _value2,
+                  onChanged: _value2Changed,
+                  title: new Text('Female'),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  activeColor: Colors.blueAccent,
+                ),
+              ],
+            ),
+          ),
+        );
 
 
     return Scaffold(
