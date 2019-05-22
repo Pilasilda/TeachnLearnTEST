@@ -37,9 +37,9 @@ class _EmailPassPageState extends State<EmailPassPage>{
             color: Colors.lightBlueAccent,
             child: Text('Next', style: TextStyle(color: Colors.white)),
             onPressed: () {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => new EmailPassPage())
-              );
+              /*Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => new WhoAreYouPage())
+              );*/
             }
         ),
       ),
