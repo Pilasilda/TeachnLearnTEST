@@ -8,6 +8,15 @@ class NameGenderPage extends StatefulWidget{
 }
 
 class _NameGenderPageState extends State<NameGenderPage>{
+  bool _maleIsChecked = false;
+  bool _femaleIsChecked = false;
+  void onChanged(bool value) {
+    setState((){
+      _maleIsChecked = value;
+      _femaleIsChecked = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context){
 
@@ -35,9 +44,8 @@ class _NameGenderPageState extends State<NameGenderPage>{
             onPressed: () {
               //Navigator.push(context,
               //    new MaterialPageRoute(builder: (context) => new NameGenderPage())
-             // );
-            }
-
+              // );
+           }
         ),
       ),
     );
@@ -54,45 +62,28 @@ class _NameGenderPageState extends State<NameGenderPage>{
       ),
     );
 
-
-    bool _value1 = false;
-    bool _value2 = false;
-
-    //we omitted the brackets '{}' and are using fat arrow '=>' instead, this is dart syntax
-    void _value1Changed(bool value) => setState(() => _value1 = value);
-    void _value2Changed(bool value) => setState(() => _value2 = value);
-
-
-
     final genderCheckbox = new Container(
-          padding: new EdgeInsets.all(5.0),
-          alignment: Alignment.topLeft,
-          child: new Center(
-
-            child: new Column(
-              children: <Widget>[
-
-                Text('Gender', textAlign: TextAlign.left,),
-
-                new CheckboxListTile(
-                  value: _value2,
-                  onChanged: _value2Changed,
-                  title: new Text('Male'),
-                  controlAffinity: ListTileControlAffinity.leading,
-                  activeColor: Colors.blueAccent,
-                ),
-
-                new CheckboxListTile(
-                  value: _value2,
-                  onChanged: _value2Changed,
-                  title: new Text('Female'),
-                  controlAffinity: ListTileControlAffinity.leading,
-                  activeColor: Colors.blueAccent,
-                ),
-              ],
-            ),
+      padding: new EdgeInsets.all(14.0),
+      child: new Center(
+        child:
+          new Column(
+            children: <Widget>[
+              new Row(
+                children: <Widget>[
+                  new Text('Male'),
+                  new Checkbox(value: _maleIsChecked, onChanged: (bool value){onChanged(value);}),
+                ]
+              ),
+              new Row(
+                children: <Widget>[
+                  new Text('Female'),
+                  new Checkbox(value: _femaleIsChecked, onChanged: (bool value){onChanged(value);}),
+                  ]
+              ),
+            ]
           ),
-        );
+      ),
+    );
 
 
     return Scaffold(
