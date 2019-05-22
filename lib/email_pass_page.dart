@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'email_pass_page.dart';
 
-class NameGenderPage extends StatefulWidget{
-  static String tag = 'NameGenderPage';
+class EmailPassPage extends StatefulWidget{
+  static String tag = 'EmailPassPage';
 
   @override
-  _NameGenderPageState createState() => new _NameGenderPageState();
+  _EmailPassPageState createState() => new _EmailPassPageState();
 }
 
-class _NameGenderPageState extends State<NameGenderPage>{
+class _EmailPassPageState extends State<EmailPassPage>{
   bool _maleIsChecked = false;
   bool _femaleIsChecked = false;
   void onChanged(bool value) {
@@ -44,9 +43,9 @@ class _NameGenderPageState extends State<NameGenderPage>{
             child: Text('Next', style: TextStyle(color: Colors.white)),
             onPressed: () {
               Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => new EmailPassPage())
+                  new MaterialPageRoute(builder: (context) => new WhoAreYouPage())
               );
-           }
+            }
         ),
       ),
     );
@@ -67,22 +66,22 @@ class _NameGenderPageState extends State<NameGenderPage>{
       padding: new EdgeInsets.all(14.0),
       child: new Center(
         child:
-          new Column(
+        new Column(
             children: <Widget>[
               new Row(
-                children: <Widget>[
-                  new Text('Male'),
-                  new Checkbox(value: _maleIsChecked, onChanged: (bool value){onChanged(value);}),
-                ]
+                  children: <Widget>[
+                    new Text('Dog'),
+                    new Checkbox(value: _maleIsChecked, onChanged: (bool value){onChanged(value);}),
+                  ]
               ),
               new Row(
-                children: <Widget>[
-                  new Text('Female'),
-                  new Checkbox(value: _femaleIsChecked, onChanged: (bool value){onChanged(value);}),
+                  children: <Widget>[
+                    new Text('Donkey'),
+                    new Checkbox(value: _femaleIsChecked, onChanged: (bool value){onChanged(value);}),
                   ]
               ),
             ]
-          ),
+        ),
       ),
     );
 
@@ -105,6 +104,3 @@ class _NameGenderPageState extends State<NameGenderPage>{
     );
   }
 }
-
-
-
