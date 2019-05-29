@@ -9,14 +9,21 @@ class NameGenderPage extends StatefulWidget{
 }
 
 class _NameGenderPageState extends State<NameGenderPage>{
-  bool _maleIsChecked = false;
-  bool _femaleIsChecked = false;
-  void onChanged(bool value) {
+  bool _male = false;
+  bool _female= false;
+
+  void _maleChanged(bool value) => setState(() => _male = value);
+  void _femaleChanged(bool value) => setState(() => _female = value);
+
+  /*void onChanged(bool value) {
     setState((){
       _maleIsChecked = value;
       _femaleIsChecked = value;
-    });
-  }
+
+
+    });*/
+
+
 
   @override
   Widget build(BuildContext context){
@@ -46,7 +53,7 @@ class _NameGenderPageState extends State<NameGenderPage>{
               Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => new EmailPassPage())
               );
-           }
+            }
         ),
       ),
     );
@@ -67,8 +74,31 @@ class _NameGenderPageState extends State<NameGenderPage>{
       padding: new EdgeInsets.all(14.0),
       child: new Center(
         child:
-          new Column(
+        new Column(
             children: <Widget>[
+              new Row(
+                  children:<Widget>[
+                    new Text('Gender ?'),
+                  ]
+              ),
+              new CheckboxListTile(
+                value: _male,
+                onChanged: _maleChanged,
+                title: new Text('Male'),
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+              new CheckboxListTile(
+                value: _female,
+                onChanged: _femaleChanged,
+                title: new Text('Female'),
+                controlAffinity: ListTileControlAffinity.leading,
+              ),
+
+              /*  new Row (
+                  children:<Widget>[
+                    new Text('Gender ?'),
+                  ]
+              ),
               new Row(
                 children: <Widget>[
                   new Text('Male'),
@@ -80,9 +110,9 @@ class _NameGenderPageState extends State<NameGenderPage>{
                   new Text('Female'),
                   new Checkbox(value: _femaleIsChecked, onChanged: (bool value){onChanged(value);}),
                   ]
-              ),
+              ),*/
             ]
-          ),
+        ),
       ),
     );
 
@@ -105,6 +135,3 @@ class _NameGenderPageState extends State<NameGenderPage>{
     );
   }
 }
-
-
-
