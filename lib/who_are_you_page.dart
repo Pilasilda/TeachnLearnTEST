@@ -39,9 +39,9 @@ class _WhoAreYouState extends State<WhoAreYouPage>{
             color: Colors.lightBlueAccent,
             child: Text('Next', style: TextStyle(color: Colors.white)),
             onPressed: () {
-              //Navigator.push(context,
-              //    new MaterialPageRoute(builder: (context) => new _Who_Are_You())
-              // );
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => new ResgistrationPage())
+               );
             }
         ),
       ),
