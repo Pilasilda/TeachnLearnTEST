@@ -4,13 +4,13 @@ import 'who_are_you_page.dart';
 class EmailPassPage extends StatefulWidget{
   static String tag = 'EmailPassPage';
 
+
   @override
   _EmailPassPageState createState() => new _EmailPassPageState();
 }
 
 class _EmailPassPageState extends State<EmailPassPage>{
-
-
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context){
@@ -82,16 +82,44 @@ class _EmailPassPageState extends State<EmailPassPage>{
         ),
       ),
     );
-
-    final terms = FlatButton(
-      child: Text('Terms and conditions',
-          style: TextStyle(color: Colors.black54)),
-      onPressed: (){
-        /*Navigator.push(context,
-            new MaterialPageRoute(builder: (context) => new RegistrationPage())
-        );*/
+/*
+    final terms = RaisedButton(
+      onPressed: () {
+        showDialog(context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+          content:
+          Form(
+              key: _formKey,
+              child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: TextFormField(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: RaisedButton(
+                            child: Text("Sse"),
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                _formKey.currentState.save();
+                              }
+                            },
+                        ),
+                    ),
+                  ],
+              ),
+            ),
+          );
+        };
       },
-    );
+      ); */
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -105,7 +133,7 @@ class _EmailPassPageState extends State<EmailPassPage>{
             email,
             password,
             confPass,
-            terms,
+            //terms,
             nextButton
           ],
         ),
