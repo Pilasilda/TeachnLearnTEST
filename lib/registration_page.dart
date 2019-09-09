@@ -8,91 +8,113 @@ class RegistrationPage extends StatefulWidget{
   _RegistrationPageState createState() => new _RegistrationPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage>{
-  @override
-  Widget build(BuildContext context){
+final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+final scaffoldKey = GlobalKey<ScaffoldState>();
+var passKey = GlobalKey<FormFieldState>();
 
-    final logo = Hero(
-      tag: 'hero',
-      child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: new Image.asset("lib/wwf-logo-design.jpg"),
-      ),
-    );
+String _email;
+String _password;
 
 
-    final nextButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: Material(
-        borderRadius: BorderRadius.circular(30.0),
-        shadowColor: Colors.lightBlueAccent.shade100,
-        elevation: 5.0,
-        child: MaterialButton(
-          minWidth: 200.0,
-          height: 42.0,
-          color: Colors.lightBlueAccent,
-          child: Text('Next', style: TextStyle(color: Colors.white)),
-          onPressed: () {
-            Navigator.push(context,
-                new MaterialPageRoute(builder: (context) => new NameGenderPage())
-            );
-          }
+void _submitCommand(){
+  final form = _formKey.currentState;
 
+  if(form.validate()){
+    form.save();
+
+    _loginCommand();
+  }
+}
+
+void _loginCommand(){
+  final snackBar = SnackBar(
+    content: Text('Email: $_email, password: $_password'),
+  );
+  scaffoldKey.currentState.showSnackBar(snackBar);
+}
+
+final logo = Hero(
+  tag: 'Logo',
+  child: Align(
+    alignment: Alignment.bottomCenter,
+    child: CircleAvatar(
+      backgroundColor: Colors.transparent,
+      radius: 80.0,
+      child: new Image.asset("lib/wwf-logo-design.jpg"),
     ),
-      ),
-    );
+  ),
+);
 
-    final email = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      decoration: InputDecoration(
-        hintText: 'Email',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0)
-        ),
-      ),
-    );
-
-    final password = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'password',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0)),
-      ),
-    );
-
-    final confirmpassword = TextFormField(
-      autofocus: false,
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'Confirm password',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(32.0)),
-      ),
-    );
-
+class _RegistrationPageState extends State<RegistrationPage>{
+  Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            logo,
-            SizedBox(height: 24.0),
-            email,
-            password,
-            confirmpassword,
-            nextButton
-          ],
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.only(left: 24.0, right: 24.0,top: 250),
+      child: Form(
+        key: _formKey,
+      child: Column (
+        children: [
+          logo,
+          TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            autofocus: false,
+            decoration: InputDecoration(
+              hintText: 'Email',
+              contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(32.0)
+            ),
+          ),
+          validator: (val) => val.isEmpty ? 'Please enter a valid emailadress' : null,
+          onSaved: (val) => _email = val,
         ),
+
+          TextFormField(
+            autofocus: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: 'password',
+              contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(32.0)),
+            ),
+            validator: (_password){
+              var result = _password.length < 4 ? "Password should have at least 4 characters" : null;
+              return result;
+            },
+          ),
+          new TextFormField(
+            autofocus: false,
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: 'Confirm password',
+              contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(32.0)),
+            ),
+            validator: (value){
+              if (value != _password) {
+                System.out.print("value: " + value + "| password: " + password);
+                return 'Password is not matching';
+              }else if(value == _password){
+                NameGenderPage();
+              }
+            },
+          ),
+
+          RaisedButton(
+            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+            color: Colors.lightBlueAccent,
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            onPressed: _submitCommand,
+            child: Text('Next'),
+          ),
+        ],
       ),
+      ),
+        ),
     );
   }
 }

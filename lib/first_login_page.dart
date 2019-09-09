@@ -19,7 +19,7 @@ class _FirstLoginPageState extends State<FirstLoginPage>{
       tag: 'hero',
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
-        radius: 48.0,
+        radius: 70.0,
         child: new Image.asset("lib/wwf-logo-design.jpg"),
       ),
     );

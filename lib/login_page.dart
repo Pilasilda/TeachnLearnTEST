@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_app/login_page.dart';
 
 class LoginPage extends StatefulWidget{
   static String tag = 'Loginpage';
@@ -9,84 +8,108 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage>{
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String _email;
+  String _password;
+
+
+  void _submitCommand(){
+    final form = _formKey.currentState;
+
+    if(form.validate()){
+      form.save();
+
+      _loginCommand();
+    }
+  }
+
+  void _loginCommand(){
+    final snackBar = SnackBar(
+      content: Text('Email: $_email, password: $_password'),
+    );
+    scaffoldKey.currentState.showSnackBar(snackBar);
+  }
+
+  final logo = Hero(
+    tag: 'Logo',
+    child: Align(
+      alignment: Alignment.bottomCenter,
+    child: CircleAvatar(
+      backgroundColor: Colors.transparent,
+      radius: 80.0,
+      child: new Image.asset("lib/wwf-logo-design.jpg"),
+      ),
+    ),
+  );
+
+  final forgotLabel = FlatButton(
+    child: Text('Forgot password?',
+        style: TextStyle(color: Colors.black54)),
+    onPressed: (){},
+  );
+
+
+
   @override
   Widget build(BuildContext context){
-
-    final logo = Hero(
-      tag: 'hero',
-      child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 48.0,
-        child: new Image.asset("lib/wwf-logo-design.jpg"),
-      ),
-    );
-
-    final email = TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      autofocus: false,
-      initialValue: 'example@hotmail.com',
-      decoration: InputDecoration(
-        hintText: 'Email',
-        contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(32.0)
-        ),
-      ),
-    );
-
-    final password = TextFormField(
-        autofocus: false,
-        //initialValue: 'some password',
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: 'password',
-          contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(32.0)),
-        ),
-    );
-
-    final loginButton = Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: Material(
-        borderRadius: BorderRadius.circular(30.0),
-        shadowColor: Colors.lightBlueAccent.shade100,
-        elevation: 5.0,
-        child: MaterialButton(
-          minWidth: 200.0,
-          height: 42.0,
-          onPressed: (){},
-          color: Colors.lightBlueAccent,
-          child: Text('Log In', style: TextStyle(color: Colors.white)),
-        ),
-      ),
-    );
-
-    final forgotLabel = FlatButton(
-      child: Text('Forgot password?',
-          style: TextStyle(color: Colors.black54)),
-      onPressed: (){},
-    );
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
+  return Scaffold(
+    backgroundColor: Colors.white,
+    body: Padding(
+      padding: EdgeInsets.only(left: 24.0, right: 24.0,top: 250),
+      child: Align(
+        alignment: Alignment.bottomCenter,
+      child: Form(
+        key: _formKey,
+        child: Column (
+          children: [
             logo,
-            SizedBox(height: 48.0),
-            email,
-            SizedBox(height: 8.0),
-            password,
-            SizedBox(height: 24.0),
-            loginButton,
-            forgotLabel
+            TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              autofocus: false,
+              decoration: InputDecoration(
+                hintText: 'Email',
+                contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32.0)
+                ),
+              ),
+              validator: (val) => val.isEmpty ? 'Please enter a valid emailadress' : null,
+              onSaved: (val) => _email = val,
+            ),
+
+            TextFormField(
+              autofocus: false,
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: 'password',
+                contentPadding: EdgeInsets.fromLTRB(20.0,10.0, 20.0, 10.0),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(32.0)),
+              ),
+              validator: (val) =>
+              val.length < 4 ? 'Password too short..' : null,
+              onSaved: (val) => _password = val,
+              //obscureText: true,
+            ),
+
+            forgotLabel,
+
+            RaisedButton(
+              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 60.0),
+              color: Colors.lightBlueAccent,
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              onPressed: _submitCommand,
+              child: Text('Log in'),
+            ),
           ],
         ),
       ),
-    );
+      ),
+      ),
+  );
   }
 }
 
