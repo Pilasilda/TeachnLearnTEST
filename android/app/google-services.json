@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "672853314969",
+    "firebase_url": "https://teachnlearn-745ca.firebaseio.com",
+    "project_id": "teachnlearn-745ca",
+    "storage_bucket": "teachnlearn-745ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672853314969:android:026f7e872b51a523add708",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672853314969-g0tnuvmg2ea18oiq1f5d20q97jnqvqir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqEyP6XCaly1PT_loaxX3FIPzVr6_2wU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672853314969-g0tnuvmg2ea18oiq1f5d20q97jnqvqir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

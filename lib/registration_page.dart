@@ -50,7 +50,7 @@ class _RegistrationPageState extends State<RegistrationPage>{
     return Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.only(left: 24.0, right: 24.0,top: 250),
+          padding: EdgeInsets.only(left: 24.0, right: 24.0,top: 80),
       child: Form(
         key: _formKey,
       child: Column (
@@ -95,7 +95,6 @@ class _RegistrationPageState extends State<RegistrationPage>{
             ),
             validator: (value){
               if (value != _password) {
-                System.out.print("value: " + value + "| password: " + password);
                 return 'Password is not matching';
               }else if(value == _password){
                 NameGenderPage();
